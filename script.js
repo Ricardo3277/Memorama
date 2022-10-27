@@ -32,6 +32,8 @@ function contarTiempo() {
         }
     }, 1000);
 }
+// FUNCION QUE HACE QUE AL TERMINAR EL TIEMPO SE BLOQUEEN LAS TARJETAS PARA QUE YA NO TE PERMITA 
+//VOLTEAR O TE LAS CUENTES COMO MOVIMIENTOS
 
 function bloquearTarjetas() {
     for (let i = 0; i <= 15; i++) {
