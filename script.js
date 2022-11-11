@@ -4,11 +4,12 @@ let tarjeta1 = null;
 let tarjeta2 = null;
 let primerResultado = null;
 let segundoResultado = null;
+let numerosAll = [];
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 30;
-let timerInicial = 30;
+let timer = 60;
+let timerInicial = 60;
 let tiempoRegresivoId = null;
 
 //APUNTANDO A DOCUMENTO HTML
@@ -17,9 +18,22 @@ let mostrarAciertos = document.getElementById('aciertos');
 let mostrarTiempo = document.getElementById('t-restante');
 
 //GENERACION DE NUMEROS ALEATORIOS
-let numeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
-numeros = numeros.sort(() => { return Math.random() - 0.5 });
-console.log(numeros);
+let numeros = [ 1,1,2,2,3,3,4,4,  
+                5,5,6,6,7,7,8,8,
+                9,9,10,10,11,11,12,12,
+                13,13,14,14,15,15,16,16,
+                17,17,18,18,19,19,20,20,  /////ARRAY PARA POSICIONES DE IMAGENES
+                21,21,22,22,23,23,24,24,
+                25,25,26,26,27,27,28,28,
+                29,29,30,30,31,31,32,32];
+numeros = numeros.sort(()=>{return Math.random() - 0.5}) ///FUNCION PARA DESORDENAR Y OBTENER RANDOM EN CADA JUEGO
+numeros = numeros.slice(0,8); /////OBTENCION DE LOS PRIMERAS 8 POSICIONES DEL ARRAY DESORDENADO PARA EL PRIMER PAR DE IMAGENES
+numerosAll = numeros.slice(); /////COPIAMOS EL ARRAY buttons a uno nuevo buttonsAll PARA QUE CONTENGA LOS MISMO PARES DE IMAGENES Y CONCUERDEN
+numerosAll = numerosAll.concat(numeros);
+console.log('ArrayAll',numerosAll); //////CONCATENAMOS O FUSIONAMOS LOS DOS ARRAYS PARA MANEJARLO EN LA VARIABLE DE LAS CONDICIONES
+numerosAll = numerosAll.sort(()=>{return Math.random() - 0.5})
+// numeros = numeros.sort(() => { return Math.random() - 0.5 });
+// console.log(numeros);
 
 //FUNCIONES
 function contarTiempo() {
@@ -28,7 +42,7 @@ function contarTiempo() {
         mostrarTiempo.innerHTML = `Tiempo: ${timer} segundos`;
         if (timer == 0) {
             clearInterval(tiempoRegresivoId);
-            bloquearTarjetas(numeros);
+            bloquearTarjetas(numerosAll);
         }
     }, 1000);
 }
@@ -55,7 +69,7 @@ function destapar(id) {
     if (tarjetasDestapadas == 1) {
         //MOSTRAR PRIMERA TARJETA
         tarjeta1 = document.getElementById(id);
-        primerResultado = numeros[id];
+        primerResultado = numerosAll[id];
         tarjeta1.innerHTML = `<img src="../Images/${primerResultado}.png" alt="">`;
 
         //DESHABILITAR PRIMER BOTON
@@ -63,7 +77,7 @@ function destapar(id) {
     } else if (tarjetasDestapadas == 2) {
         //MOSTRAR SEGUNDO NUMERO
         tarjeta2 = document.getElementById(id);
-        segundoResultado = numeros[id];
+        segundoResultado = numerosAll[id];
         tarjeta2.innerHTML = `<img src="../Images/${segundoResultado}.png" alt="">`;
 
         //DESABILITAR SEGUNDO BOTON
@@ -95,7 +109,7 @@ function destapar(id) {
                 tarjeta1.disabled = false;
                 tarjeta2.disabled = false;
                 tarjetasDestapadas = 0;
-            }, 2000);
+            }, 900);
         }
     }
 }
