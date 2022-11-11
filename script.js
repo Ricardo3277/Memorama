@@ -22,15 +22,15 @@ let numeros = [ 1,1,2,2,3,3,4,4,
                 5,5,6,6,7,7,8,8,
                 9,9,10,10,11,11,12,12,
                 13,13,14,14,15,15,16,16,
-                17,17,18,18,19,19,20,20,  /////ARRAY PARA POSICIONES DE IMAGENES
+                17,17,18,18,19,19,20,20,  /////ARRAY DE LAS IMAGENES
                 21,21,22,22,23,23,24,24,
                 25,25,26,26,27,27,28,28,
                 29,29,30,30,31,31,32,32];
 numeros = numeros.sort(()=>{return Math.random() - 0.5}) ///FUNCION PARA DESORDENAR Y OBTENER RANDOM EN CADA JUEGO
-numeros = numeros.slice(0,8); /////OBTENCION DE LOS PRIMERAS 8 POSICIONES DEL ARRAY DESORDENADO PARA EL PRIMER PAR DE IMAGENES
-numerosAll = numeros.slice(); /////COPIAMOS EL ARRAY buttons a uno nuevo buttonsAll PARA QUE CONTENGA LOS MISMO PARES DE IMAGENES Y CONCUERDEN
+numeros = numeros.slice(0,8); /////OBTENCION DE LOS PRIMERAS 8 POSICIONES 
+numerosAll = numeros.slice(); 
 numerosAll = numerosAll.concat(numeros);
-console.log('ArrayAll',numerosAll); //////CONCATENAMOS O FUSIONAMOS LOS DOS ARRAYS PARA MANEJARLO EN LA VARIABLE DE LAS CONDICIONES
+console.log('ArrayAll',numerosAll); 
 numerosAll = numerosAll.sort(()=>{return Math.random() - 0.5})
 // numeros = numeros.sort(() => { return Math.random() - 0.5 });
 // console.log(numeros);
@@ -109,6 +109,7 @@ function destapar(id) {
                 tarjeta1.disabled = false;
                 tarjeta2.disabled = false;
                 tarjetasDestapadas = 0;
+                //MODIFICACION DEL TIEMPO QUE TARDA EN VOLTEARSE LA IMAGEN CUANDO ESTA INCORRECTA
             }, 900);
         }
     }
